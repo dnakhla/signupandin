@@ -1,1 +1,15 @@
-html {}
+input[type="submit"]:disabled {
+    opacity: .5;
+}
+
+input[type="submit"]:disabled:hover {
+    background-color: red;
+}
+
+input[type="submit"]:hover {
+    background-color: green;
+}
+
+input.redborder {
+    border: 1px solid red;
+}
