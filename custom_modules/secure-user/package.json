@@ -1,0 +1,15 @@
+{
+    "name": "secure-user",
+    "version": "0.0.1",
+    "description": "wrapper for bcrypt as promises with mysql",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.3.0",
+        "mysql": "^2.11.1"
+    }
+}
