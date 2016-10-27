@@ -17,11 +17,21 @@ app.post("/user", function (request, response) {
     let userRows = Users.getUser(request.body.email, db);
     userRows
         .then(function (data) {
-            response.json(data);
+            if (data.length > 0) {
+                let user = data.shift();
+                Users.addUser(request.body.email, request.body.password, db);
+                response.json(user);
+            } else {
+                response.status(400)
+                    .send({
+                        error: 'email already exists for another account'
+                    });
+            }
         })
         .catch(function (err) {
             response.json({
-                error: 500
+                error: 500,
+                err: err
             })
         })
 });
