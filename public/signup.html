@@ -3,16 +3,17 @@
     <form>
         <div class="row">
             <div class="six columns">
-                <label for="email">Email:</label>
-                <input class="u-full-width js-email" type="email" placeholder="emailaddress@mailbox.com">
+                <label for="email">Email*</label>
+                <input class="u-full-width js-email" type="email" placeholder="emailaddress@mailbox.com" required>
             </div>
         </div>
-        <label for="password">Password</label>
-        <input class="u-full-width js-password" type='password' placeholder="password">
+        <label for="password">Password*</label>
+        <input class="u-full-width js-password" type='password' placeholder="password" required>
         <label class="newacct">
             <input type="checkbox">
             <span class="label-body">I'm new! create a new account for me</span>
           </label>
-        <input class="u-full-width button-primary js-submit" type="submit" value="Go!" disabled>
+        <small class='js-message'></small>
+        <input class="u-full-width button-primary js-submit" type="submit" value="Go!">
     </form>
 </div>
