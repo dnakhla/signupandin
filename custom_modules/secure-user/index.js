@@ -2,13 +2,9 @@
 const bcrypt = require('bcryptjs'); //used to hash passwords
 const mysql = require('mysql'); //used to connect to db
 const salt_length = 10; //setting for salt length used in new passwords
-const selectStatment = 'SELECT * FROM users WHERE email like ?'; //how we pull use object
+const selectStatment = 'SELECT id,email, CONVERT(password_hashed USING utf8) as password_hashed FROM users WHERE email like ?'; //how we pull use object
 const insertStatment = 'INSERT INTO users SET ?'; //how and where we insert
 
-module.exports = {
-    addUser: getUserAttempt,
-    getUser: getUser
-}
 
 function hashPassword(user_email, password) {
     return new Promise(function (resolve, reject) {
@@ -87,7 +83,7 @@ function addUser(user_email, password, db) {
 }
 
 function getUser(email_candidate, db) {
-    let email = mysql.escape(email_candidate);
+    let email = (email_candidate);
     return new Promise(function (resolve, reject) {
         let connection = mysql.createConnection(db);
         connection.query(selectStatment, [email], function (err, rows) {
@@ -99,4 +95,9 @@ function getUser(email_candidate, db) {
             connection.destroy();
         });
     });
+}
+
+module.exports = {
+    addUser: getUserAttempt,
+    getUser: getUser
 }
