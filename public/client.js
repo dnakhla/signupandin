@@ -43,7 +43,10 @@ function validateEmail(e) {
 }
 
 function validatePassword(e) {
-    state.password_ready = true;
+    if ($('.js-password')
+        .val()
+        .length > 4)
+        state.password_ready = true;
     updateSubmit();
     return Promise.resolve(true)
 }
@@ -60,6 +63,10 @@ function injectDepend(script) {
     });
 }
 
+function validateSubmit(e) {
+    e.preventDefault();
+}
+
 function bindEvents(data) {
     $(mainEl)
         .html(data);
@@ -67,6 +74,8 @@ function bindEvents(data) {
         .on('change', validateEmail)
     $('.js-password')
         .on('change', validatePassword)
+    $('form')
+        .on('submit', validateSubmit)
 }
 
 function init(view) {
